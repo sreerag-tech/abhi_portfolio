@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Abhinav Mohan, a Python Django Developer offering expert solutions in web development, API design, and backend systems.">
+    <meta name="keywords" content="Python, Django, web development, backend development, API design, database management">
+    <meta name="author" content="Abhinav Mohan">
+    <title>Abhinav Mohan - Python Django Developer Portfolio</title>
+    <!-- Critical Inline CSS for Basic Rendering -->
+    <style>
+        :root {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --accent-color: #4f46e5;
+            --secondary-color: #2dd4bf;
+            --card-bg: rgba(30, 30, 30, 0.9);
+            --gradient: linear-gradient(45deg, #4f46e5, #2dd4bf);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            color: var(--accent-color);
+            font-weight: 900;
+            font-size: 2rem;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .navigation {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navigation li {
+            list-style: none;
+        }
+
+        .navigation li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        section {
+            padding: 100px 40px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1, h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            max-width: 800px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: var(--gradient);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+        }
+
+        .services-container, .portfolio-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-box, .portfolio-item, .testimonial-item {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-box:hover, .portfolio-item:hover, .testimonial-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-container {
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .contact-info, .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .input-box {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .input-box input, .input-box textarea {
+            width: 100%;
+            padding: 15px;
+            background: var(--card-bg);
+            color: var(--text-color);
+            border: none;
+            border-radius: 10px;
+        }
+
+        .input-box label {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: #808080;
+            transition: all 0.3s ease;
+        }
+
+        .input-box input:focus ~ label,
+        .input-box textarea:focus ~ label,
+        .input-box input:valid ~ label,
+        .input-box textarea:valid ~ label {
+            top: -20px;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+        }
+
+        footer {
+            background: var(--card-bg);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Swiper Fallback */
+        .swiper {
+            width: 100%;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+        }
+
+        .testimonial-item {
+            display: none;
+        }
+
+        .testimonial-item.active {
+            display: block;
+        }
+    </style>
+    <!-- External Dependencies -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css" />
+    <!-- Full CSS -->
+    <style>
+        .cursor {
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: all 0.2s ease;
+            z-index: 1000;
+            mix-blend-mode: difference;
+        }
+
+        .cursor.grow {
+            width: 36px;
+            height: 36px;
+            background-color: rgba(79, 70, 229, 0.2);
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .video-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85));
+        }
+
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent-color);
+            box-shadow: 0 0 12px var(--accent-color);
+            animation: floatParticle 20s infinite ease-in-out;
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        @keyframes floatParticle {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+            50% { transform: translateY(-120vh) scale(0.7); opacity: 0.2; }
+        }
+
+        header.sticky {
+            padding: 15px 40px;
+            background: rgba(18, 18, 18, 0.95);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .navigation li a:hover {
+            color: var(--accent-color);
+        }
+
+        .navigation li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: var(--gradient);
+            left: 0;
+            bottom: -8px;
+            transition: width 0.3s ease;
+        }
+
+        .navigation li a:hover::after {
+            width: 100%;
+        }
+
+        .toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .toggle div {
+            width: 32px;
+            height: 4px;
+            background: var(--text-color);
+            margin: 7px 0;
+            transition: all 0.3s ease;
+        }
+
+        .hero {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            font-weight: 900;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gradient);
+        }
+
+        .typing-text {
+            border-right: 4px solid var(--accent-color);
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 40px auto;
+            width: 24ch;
+            animation: typing 4s steps(24) infinite, blink 0.5s step-end infinite alternate;
+            color: var(--secondary-color);
+        }
+
+        @keyframes typing {
+            0% { width: 0 }
+            50% { width: 24ch }
+            90% { width: 24ch }
+            100% { width: 0 }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            width: 60px;
+            height: 60px;
+            background: #1e40af;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 24px;
+        }
+
+        .social-icons a:hover {
+            background: var(--gradient);
+        }
+
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 350px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 350px;
+        }
+
+        .about-text h2 {
+            font-size: 3.5rem;
+        }
+
+        .skills {
+            margin-top: 60px;
+        }
+
+        .skill-bar {
+            margin-bottom: 30px;
+        }
+
+        .skill-bar h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .skill-bar .bar {
+            height: 14px;
+            background: #2a2a2a;
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-bar .bar span {
+            height: 100%;
+            background: var(--gradient);
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 14px;
+            transition: width 2s ease-in-out;
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+            gap: 20px;
+        }
+
+        .portfolio-filters li {
+            list-style: none;
+            padding: 12px 30px;
+            cursor: pointer;
+            border-radius: 30px;
+            background: #1e40af;
+            font-weight: 600;
+        }
+
+        .portfolio-filters li.active,
+        .portfolio-filters li:hover {
+            background: var(--gradient);
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            height: 360px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 18, 18, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+        }
+
+        .service-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .testimonial-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 30px;
+            border: 5px solid var(--accent-color);
+        }
+
+        .testimonial-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-name {
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: #1e40af;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            margin-right: 30px;
+            font-size: 1.8rem;
+        }
+
+        .error-message {
+            color: #f87171;
+            font-size: 0.9rem;
+            margin-top: 8px;
+            display: none;
+            text-align: left;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            background: var(--gradient);
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.6rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .portfolio-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .portfolio-modal-content {
+            background: var(--card-bg);
+            padding: 60px;
+            max-width: 1000px;
+            width: 90%;
+            border-radius: 20px;
+            position: relative;
+            transform: scale(0.7);
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-modal.active .portfolio-modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        .portfolio-modal-img {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .portfolio-modal-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .toggle {
+                display: block;
+            }
+            .navigation {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                height: 0;
+                background: var(--bg-color);
+                flex-direction: column;
+                overflow: hidden;
+                transition: height 0.4s ease, opacity 0.4s ease;
+                opacity: 0;
+            }
+            .navigation.active {
+                height: 350px;
+                opacity: 1;
+                padding: 30px;
+            }
+            .about-img {
+                margin-bottom: 50px;
+            }
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .portfolio-item {
+                height: 300px;
+            }
+        }
+
+        /* Preloader */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease;
+        }
+
+        .loader {
+            width: 70px;
+            height: 70px;
+            border: 7px solid #1e40af;
+            border-radius: 50%;
+            border-top-color: var(--accent-color);
+            animation: spin 1s infinite linear;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Simplified Testimonial Styles */
+        .testimonial-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-item {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .testimonial-item.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .testimonial-controls {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .testimonial-controls button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            background: #808080;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .testimonial-controls button.active {
+            background: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop id="background-video" poster="/api/placeholder/1920/1080">
+            <source src="/video/4K Beautiful Anime Scenery.mp4" type="video/mp4">
+            <img src="/api/placeholder/1920/1080" class="fallback" alt="Background fallback">
+        </video>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">Abhinav<span>Dev</span></a>
+        <div class="toggle" onclick="toggleMenu()">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+        <ul class="navigation">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInDown">Hi, I'm <span>Abhinav Mohan</span></h1>
+            <div class="typing-text">Python Django Developer</div>
+            <p class="animate__animated animate__fadeInUp">Building robust, scalable web applications with Python and Django to empower businesses with cutting-edge technology.</p>
+            <div class="animate__animated animate__fadeInUp animate__delay-1s">
+                <a href="#portfolio" class="btn">Explore Portfolio</a>
+                <a href="#contact" class="btn btn-secondary">Connect with Me</a>
+            </div>
+            <div class="social-icons animate__animated animate__fadeInUp animate__delay-1s">
+                <a href="https://www.linkedin.com/in/abhinav-mohan-b609612bb?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/CASSIAN9497" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/abxi_nav_m?igsh=NGNjejNucmlmNjVi" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-img" data-aos="fade-right" data-aos-duration="1200">
+                <img src="/img/abhi.jpg" alt="Abhinav Mohan, Python Django Developer">
+            </div>
+            <div class="about-text" data-aos="fade-left" data-aos-duration="1200">
+                <h2>About Me</h2>
+                <p>As a Python Django Developer with over 1 year of experience, I specialize in building scalable web applications, APIs, and backend systems.</p>
+                <p>With expertise in Django, Python, and modern web technologies, I deliver high-performance solutions tailored to client needs.</p>
+                <div class="skills">
+                    <div class="skill-bar">
+                        <h3>Python <span>95%</span></h3>
+                        <div class="bar"><span style="width: 0"></span></div>
+                    </div>
+                    <div class="skill-bar">
+                        <h3>Django <span>30%</span></h3>
+                        <div class="bar"><span style="width: 0"></span></div>
+                    </div>
+                    <div class="skill-bar">
+                        <h3>HTML <span>85%</span></h3>
+                        <div class="bar"><span style="width: 0"></span></div>
+                    </div>
+                    <div class="skill-bar">
+                        <h3>MySql <span>80%</span></h3>
+                        <div class="bar"><span style="width: 0"></span></div>
+                    </div>
+                    <div class="skill-bar">
+                        <h3>CSS <span>80%</span></h3>
+                        <div class="bar"><span style="width: 0"></span></div>
+                    </div>
+                    <div class="skill-bar">
+                        <h3>Bootstrap <span>20%</span></h3>
+                        <div class="bar"><span style="width: 0"></span></div>
+                    </div>
+                </div>
+                <a href="#" class="btn" style="margin-top: 40px;">Download CV</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <h2 data-aos="fade-down" data-aos-duration="1200">My Portfolio</h2>
+        <p data-aos="fade-up" data-aos-duration="1200">Explore my recent projects showcasing expertise in Python and Django development.</p>
+        <ul class="portfolio-filters" data-aos="fade-up" data-aos-duration="1200">
+            <li class="active" data-filter="all">All</li>
+            <li data-filter="web">Web Applications</li>
+            <li data-filter="api">API Development</li>
+            <li data-filter="ecommerce">E-commerce</li>
+        </ul>
+        <div class="portfolio-gallery" data-aos="fade-up" data-aos-duration="1200">
+            <div class="portfolio-item" data-category="web" data-title="Task Management Platform" data-description="Developed a full-stack task management web application with user authentication and real-time updates." data-client="TechCorp" data-date="March 2025" data-tools="Django, PostgreSQL, JavaScript">
+                <img src="/img/cmg.png" alt="Task Management Platform Project">
+                <div class="portfolio-overlay">
+                    <h3>Task Management Platform</h3>
+                    <p>Full-stack task management web application.</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="api" data-title="REST API for Mobile App" data-description="Designed and implemented a secure REST API for a mobile application, handling 10,000+ daily requests." data-client="Mobile Inc." data-date="January 2025" data-tools="Django REST Framework, PostgreSQL">
+                <img src="/img/cmg.png" alt="REST API Project">
+                <div class="portfolio-overlay">
+                    <h3>REST API for Mobile App</h3>
+                    <p>Secure REST API for a mobile application.</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="ecommerce" data-title="E-commerce Platform" data-description="Built a scalable e-commerce platform with payment integration and inventory management." data-client="Retail Group" data-date="November 2024" data-tools="Django, Stripe, PostgreSQL">
+                <img src="/img/cmg.png" alt="E-commerce Platform Project">
+                <div class="portfolio-overlay">
+                    <h3>E-commerce Platform</h3>
+                    <p>Scalable e-commerce platform with payment integration.</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 data-aos="fade-down" data-aos-duration="1200">My Services</h2>
+        <p data-aos="fade-up" data-aos-duration="1200">Tailored web development solutions to meet your business needs.</p>
+        <div class="services-container">
+            <div class="service-box" data-aos="zoom-in" data-aos-duration="1200">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Web Development</h3>
+                <p>Building responsive and scalable web applications using Django and Python.</p>
+            </div>
+            <div class="service-box" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="200">
+                <div class="service-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h3>API Development</h3>
+                <p>Designing secure and efficient REST APIs for seamless integration.</p>
+            </div>
+            <div class="service-box" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="400">
+                <div class="service-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>E-commerce Solutions</h3>
+                <p>Developing robust e-commerce platforms with payment and inventory systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <h2 data-aos="fade-down" data-aos-duration="1200">Client Testimonials</h2>
+        <p data-aos="fade-up" data-aos-duration="1200">Hear what my clients say about my development services.</p>
+        <div class="testimonial-container">
+            <div class="testimonial-item active" data-aos="zoom-in" data-aos-duration="1200">
+                <div class="testimonial-img">
+                    <img src="/img/1.jpg" alt="Client 1">
+                </div>
+                <p class="testimonial-text">"Abhinav's Django expertise delivered a robust platform on time."</p>
+                <h3 class="testimonial-name">John Doe</h3>
+                <p class="testimonial-position">CEO, TechCorp</p>
+            </div>
+            <div class="testimonial-item" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="200">
+                <div class="testimonial-img">
+                    <img src="/img/1.jpg" alt="Client 2">
+                </div>
+                <p class="testimonial-text">"The API integration was seamless and efficient."</p>
+                <h3 class="testimonial-name">Jane Smith</h3>
+                <p class="testimonial-position">CTO, Mobile Inc.</p>
+            </div>
+            <div class="testimonial-item" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="400">
+                <div class="testimonial-img">
+                    <img src="/img/1.jpg" alt="Client 3">
+                </div>
+                <p class="testimonial-text">"Abhinav's e-commerce solution boosted our sales."</p>
+                <h3 class="testimonial-name">Mike Johnson</h3>
+                <p class="testimonial-position">Founder, Retail Group</p>
+            </div>
+            <div class="testimonial-controls">
+                <button class="active"></button>
+                <button></button>
+                <button></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 data-aos="fade-down" data-aos-duration="1200">Get in Touch</h2>
+        <p data-aos="fade-up" data-aos-duration="1200">Let's collaborate to build your next web solution.</p>
+        <div class="contact-content">
+            <div class="contact-info" data-aos="fade-right" data-aos-duration="1200">
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>abhinavmohan10@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+1 (123) 456-7890</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form" data-aos="fade-left" data-aos-duration="1200">
+                <form id="contact-form">
+                    <div class="input-box">
+                        <input type="text" id="name" required>
+                        <label>Name</label>
+                        <div class="error-message">Please enter your name</div>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" id="email" required>
+                        <label>Email</label>
+                        <div class="error-message">Please enter a valid email</div>
+                    </div>
+                    <div class="input-box">
+                        <textarea id="message" rows="6" required></textarea>
+                        <label>Message</label>
+                        <div class="error-message">Please enter your message</div>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Abhinav Mohan. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/abhinav-mohan-b609612bb?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/CASSIAN9497" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/abxi_nav_m?igsh=NGNjejNucmlmNjVi" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
+
+    <!-- Portfolio Modal -->
+    <div class="portfolio-modal">
+        <div class="portfolio-modal-content">
+            <span class="close-modal">×</span>
+            <div class="portfolio-modal-img">
+                <img src="/api/placeholder/900/500" alt="Portfolio Item">
+            </div>
+            <div class="portfolio-modal-text">
+                <h3>Project Title</h3>
+                <p><strong>Client:</strong> Client Name</p>
+                <p><strong>Date:</strong> Month Year</p>
+                <p><strong>Tools:</strong> Tool 1, Tool 2</p>
+                <p>Description of the project goes here.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const loaderWrapper = document.querySelector('.loader-wrapper');
+            loaderWrapper.style.opacity = '0';
+            setTimeout(() => {
+                loaderWrapper.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 600);
+        });
+
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        const interactiveElements = document.querySelectorAll('a, button, .portfolio-item, .service-box');
+        interactiveElements.forEach(elem => {
+            elem.addEventListener('mouseenter', () => cursor.classList.add('grow'));
+            elem.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
+        });
+
+        // Sticky Header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 100);
+        });
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const toggle = document.querySelector('.toggle');
+            const navigation = document.querySelector('.navigation');
+            toggle.classList.toggle('active');
+            navigation.classList.toggle('active');
+            document.body.style.overflow = navigation.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        // Back to Top
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('active', window.scrollY > 400);
+        });
+
+        // Skill Bars Animation
+        const skillBars = document.querySelectorAll('.skill-bar .bar span');
+        const animateSkills = () => {
+            skillBars.forEach(bar => {
+                const width = bar.parentElement.previousElementSibling.querySelector('span').textContent;
+                bar.style.width = width;
+            });
+        };
+
+        const aboutSection = document.querySelector('#about');
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                animateSkills();
+                observer.disconnect();
+            }
+        }, { threshold: 0.5 });
+        observer.observe(aboutSection);
+
+        // Portfolio Filter
+        $('.portfolio-filters li').click(function() {
+            $('.portfolio-filters li').removeClass('active');
+            $(this).addClass('active');
+            const filter = $(this).attr('data-filter');
+            $('.portfolio-gallery .portfolio-item').each(function() {
+                if (filter === 'all' || $(this).attr('data-category') === filter) {
+                    $(this).fadeIn(400).css('display', 'block');
+                } else {
+                    $(this).fadeOut(400);
+                }
+            });
+        });
+
+        // Portfolio Modal
+        $('.portfolio-item').click(function(e) {
+            e.preventDefault();
+            const title = $(this).attr('data-title');
+            const description = $(this).attr('data-description');
+            const client = $(this).attr('data-client');
+            const date = $(this).attr('data-date');
+            const tools = $(this).attr('data-tools');
+            const imgSrc = $(this).find('img').attr('src');
+            $('.portfolio-modal-img img').attr('src', imgSrc);
+            $('.portfolio-modal-text h3').text(title);
+            $('.portfolio-modal-text p').eq(0).html(`<strong>Client:</strong> ${client}`);
+            $('.portfolio-modal-text p').eq(1).html(`<strong>Date:</strong> ${date}`);
+            $('.portfolio-modal-text p').eq(2).html(`<strong>Tools:</strong> ${tools}`);
+            $('.portfolio-modal-text p').eq(3).text(description);
+            $('.portfolio-modal').addClass('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        $('.close-modal').click(() => {
+            $('.portfolio-modal').removeClass('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        $('.portfolio-modal').click((e) => {
+            if (e.target.classList.contains('portfolio-modal')) {
+                $('.portfolio-modal').removeClass('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Particles Animation
+        function createParticles() {
+            const particleContainer = document.body;
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 12 + 6;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                particleContainer.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // AOS Initialization
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 1200,
+                once: true,
+                easing: 'ease-out-cubic'
+            });
+        }
+
+        // Simplified Testimonial Rotation
+        const testimonialItems = document.querySelectorAll('.testimonial-item');
+        const testimonialButtons = document.querySelectorAll('.testimonial-controls button');
+        let currentTestimonial = 0;
+
+        function showTestimonial(index) {
+            testimonialItems.forEach((item, i) => {
+                item.classList.toggle('active', i === index);
+            });
+            testimonialButtons.forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+        }
+
+        testimonialButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                currentTestimonial = index;
+                showTestimonial(currentTestimonial);
+            });
+        });
+
+        // Auto-rotate testimonials every 6 seconds
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonialItems.length;
+            showTestimonial(currentTestimonial);
+        }, 6000);
+
+        // Contact Form Validation
+        $('#contact-form').submit(function(e) {
+            e.preventDefault();
+            let valid = true;
+            $('.error-message').hide();
+            const name = $('#name').val().trim();
+            const email = $('#email').val().trim();
+            const message = $('#message').val().trim();
+
+            if (!name) {
+                $('#name').next('.error-message').show();
+                valid = false;
+            }
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                $('#email').next('.error-message').show();
+                valid = false;
+            }
+            if (!message) {
+                $('#message').next('.error-message').show();
+                valid = false;
+            }
+
+            if (valid) {
+                alert('Message sent successfully! (Demo, no actual submission.)');
+                this.reset();
+                $('.input-box input, .input-box textarea').removeClass('valid');
+            }
+        });
+
+        $('.input-box input, .input-box textarea').on('input', function() {
+            if ($(this).val().trim()) {
+                $(this).addClass('valid');
+            } else {
+                $(this).removeClass('valid');
+            }
+        });
+
+        // Fallback for jQuery
+        if (typeof $ === 'undefined') {
+            console.error('jQuery not loaded.');
+            document.getElementById('contact-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Message sent! (Demo, no actual submission.)');
+                e.target.reset();
+            });
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                item.style.display = 'block';
+            });
+        }
+    </script>
+</body>
+</html>
